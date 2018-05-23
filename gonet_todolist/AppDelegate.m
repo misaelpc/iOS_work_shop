@@ -16,6 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  NSLog(@"Did Finish Launching");
   // Override point for customization after application launch.
   return YES;
 }
@@ -28,6 +29,7 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+  NSLog(@"Did Enter BackGround");
   // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
   // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }

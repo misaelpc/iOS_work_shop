@@ -19,10 +19,15 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.tasks = [NSMutableArray array];
   [self setupButton];
   [self setupTextField];
   [self setupTableView];
   // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+  [super viewDidAppear:animated];
 }
 
 - (void) setupTableView {
@@ -69,6 +74,14 @@
   return [self.tasks count];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+  UITableViewCell *cell = [self.taskTable dequeueReusableCellWithIdentifier:@"Cell"];
+  NSString *item = [self.tasks objectAtIndex:indexPath.row];
+  cell.textLabel.text = item;
+  return cell;
+}
+
+//https://github.com/misaelpc/iOS_work_shop
 
 - (void)addTask:(UIButton *)sender {
   NSString *text = [self.taskField text];
@@ -77,6 +90,8 @@
     return;
   }
   NSLog(@"Task entered: %@", text);
+  [self.tasks addObject:text];
+  [self.taskTable reloadData];
   [self.taskField setText:@""];
   [self.taskField resignFirstResponder];
 }
