@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,17 +17,68 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="homeColor"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6t1-kU-Gsg">
+                                <rect key="frame" x="15" y="50" width="280" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="KV7-kb-fta"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbq-hU-qUU">
+                                <rect key="frame" x="291" y="50" width="74" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="1r6-gE-aad"/>
+                                    <constraint firstAttribute="height" constant="50" id="fBY-Ot-9tQ"/>
+                                </constraints>
+                                <state key="normal" title="Insert"/>
+                                <connections>
+                                    <action selector="insertButtonWasTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mav-2L-gXV"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EKn-p9-wGH">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="mNL-vO-k9b">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mNL-vO-k9b" id="wga-dP-e36">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="KQG-9f-ybs"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6t1-kU-Gsg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="0hK-OT-MFk"/>
+                            <constraint firstItem="EKn-p9-wGH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2UX-pk-fMx"/>
+                            <constraint firstItem="pbq-hU-qUU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="CWy-c8-hCP"/>
+                            <constraint firstItem="EKn-p9-wGH" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="LpG-Vr-Ibo"/>
+                            <constraint firstItem="EKn-p9-wGH" firstAttribute="top" secondItem="6t1-kU-Gsg" secondAttribute="bottom" constant="8" id="LzP-gk-dxI"/>
+                            <constraint firstItem="EKn-p9-wGH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Rz5-AE-pz4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6t1-kU-Gsg" secondAttribute="trailing" constant="80" id="agc-ZW-ArX"/>
+                            <constraint firstItem="6t1-kU-Gsg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="gKj-c5-FUf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pbq-hU-qUU" secondAttribute="trailing" constant="10" id="mGy-9P-yXB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="insertButton" destination="pbq-hU-qUU" id="5nh-kW-j9b"/>
+                        <outlet property="taskFiled" destination="6t1-kU-Gsg" id="SqY-eX-PXw"/>
+                        <outlet property="taskTable" destination="EKn-p9-wGH" id="MjJ-K0-GIg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="95.802098950524751"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="homeColor">
-            <color red="0.64999997615814209" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>
